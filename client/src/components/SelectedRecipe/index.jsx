@@ -1,12 +1,12 @@
 import React from "react";
-import img from "../Recipe/recipe.jpg";
 import RecipeModal from "../RecipeModal";
+import img from "../Recipe/recipe.jpg";
 import "./style.css";
 
 class SelectedRecipe extends React.Component {
   state = { showVersions: false };
 
-  onVersionsClick = () => {
+  onVersionsToggle = () => {
     this.setState({ showVersions: !this.state.showVersions });
   };
 
@@ -25,7 +25,7 @@ class SelectedRecipe extends React.Component {
           <div>
             <button
               className="btn btn-link btn-sm p-0"
-              onClick={this.onVersionsClick}
+              onClick={this.onVersionsToggle}
             >
               Show previous versions
             </button>
@@ -46,7 +46,7 @@ class SelectedRecipe extends React.Component {
                 <button
                   type="button"
                   className="btn btn-sm btn-link p-0"
-                  onClick={this.onVersionsClick}
+                  onClick={this.onVersionsToggle}
                 >
                   Hide versions
                 </button>
