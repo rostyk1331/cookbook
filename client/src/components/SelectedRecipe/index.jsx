@@ -27,7 +27,7 @@ class SelectedRecipe extends React.Component {
               className="btn btn-link btn-sm p-0"
               onClick={this.onVersionsToggle}
             >
-              Show previous versions
+              {this.state.showVersions ? "Hide" : "Show"} previous versions
             </button>
             {this.state.showVersions && (
               <div>
@@ -43,13 +43,6 @@ class SelectedRecipe extends React.Component {
                     </p>
                   </div>
                 ))}
-                <button
-                  type="button"
-                  className="btn btn-sm btn-link p-0"
-                  onClick={this.onVersionsToggle}
-                >
-                  Hide versions
-                </button>
               </div>
             )}
           </div>

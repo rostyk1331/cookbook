@@ -35,7 +35,7 @@ const RecipeModal = ({ label, onRecipeAdd, id, recipe }) => {
       setIsInputinvalid(true);
       return;
     }
-    console.log(id);
+
     onRecipeAdd({ title, description, id });
     toggle();
     setTitle("");
