@@ -1,0 +1,7 @@
+.overflow-auto::-webkit-scrollbar {
+  width: 2px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+  background-color: grey;
+}
