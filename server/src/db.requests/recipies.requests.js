@@ -23,11 +23,19 @@ export const createRecipe = async ({ title, description }) => {
 };
 
 export const updateRecipeById = async (id, { title, description }) => {
+  const previous = await Recipe.findById(id);
+
   const updatedRecipe = await Recipe.findByIdAndUpdate(
     id,
     {
       title,
-      description
+      description,
+      $push: {
+        previousVersions: {
+          title: previous.title,
+          description: previous.description
+        }
+      }
     },
     { new: true }
   );

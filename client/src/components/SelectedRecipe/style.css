@@ -3,5 +3,12 @@
 }
 
 .overflow-auto::-webkit-scrollbar-thumb {
-  background-color: grey;
+  background-color: #dee2e6;
+}
+
+.recipe-version {
+  border-bottom: 1px solid #dee2e6;
+}
+.recipe-version:last-of-type {
+  border-bottom: none;
 }

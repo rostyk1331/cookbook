@@ -44,11 +44,15 @@ const RecipeModal = ({ label, onRecipeAdd, id, recipe }) => {
   };
   return (
     <div>
-      <Button color="outline-primary" onClick={toggle} className="w-100 mb-2">
+      <Button
+        color="outline-primary shadow-none"
+        onClick={toggle}
+        className="w-100 my-2"
+      >
         {label}
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>{label}</ModalHeader>
+        <ModalHeader>{label}</ModalHeader>
         <ModalBody>
           <Form>
             <FormGroup>
@@ -85,10 +89,10 @@ const RecipeModal = ({ label, onRecipeAdd, id, recipe }) => {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={onAdd}>
+          <Button color="primary shadow-none" onClick={onAdd}>
             OK
           </Button>
-          <Button color="danger" onClick={toggle}>
+          <Button color="danger shadow-none" onClick={toggle}>
             Cancel
           </Button>
         </ModalFooter>

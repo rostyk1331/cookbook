@@ -7,7 +7,8 @@ const RecipeSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
     required: true
-  }
+  },
+  previousVersions: [{ type: Object, default: {}, required: false }]
 });
 
 export const Recipe = mongoose.model("Recipe", RecipeSchema);

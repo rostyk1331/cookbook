@@ -3,29 +3,75 @@ import img from "../Recipe/recipe.jpg";
 import RecipeModal from "../RecipeModal";
 import "./style.css";
 
-const SelectedRecipe = ({ recipe, onRecipeDelete, onRecipeUpdate }) => {
-  return (
-    <div className="pt-3">
-      <img src={img} alt="recipe" className="img-fluid w-75 mx-auto d-block" />
-      <h3 className="text-center break-word">{recipe.title}</h3>
-      <p className="word-break">{recipe.description}</p>
-      <div className="d-flex justify-content-between">
-        <RecipeModal
-          label={"Update"}
-          id={recipe._id}
-          onRecipeAdd={onRecipeUpdate}
-          recipe={recipe}
+class SelectedRecipe extends React.Component {
+  state = { showVersions: false };
+
+  onVersionsClick = () => {
+    this.setState({ showVersions: !this.state.showVersions });
+  };
+
+  render() {
+    const { recipe, onRecipeUpdate, onRecipeDelete } = this.props;
+    return (
+      <div className="pt-3">
+        <img
+          src={img}
+          alt="recipe"
+          className="img-fluid w-75 mx-auto d-block"
         />
-        <button
-          type="button"
-          className="btn btn-outline-danger mb-2"
-          onClick={() => onRecipeDelete(recipe._id)}
-        >
-          Delete
-        </button>
+        <h3 className="text-center break-word">{recipe.title}</h3>
+        <p className="word-break m-0">{recipe.description}</p>
+        {!!recipe.previousVersions.length && (
+          <div>
+            <button
+              className="btn btn-link btn-sm p-0"
+              onClick={this.onVersionsClick}
+            >
+              Show previous versions
+            </button>
+            {this.state.showVersions && (
+              <div>
+                {recipe.previousVersions.reverse().map((version, index) => (
+                  <div key={index} className="recipe-version py-1">
+                    <p className="m-0">
+                      <span className="font-weight-bold">Title: </span>
+                      {version.title}
+                    </p>
+                    <p className="m-0">
+                      <span className="font-weight-bold">Description: </span>
+                      {version.description}
+                    </p>
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  className="btn btn-sm btn-link p-0"
+                  onClick={this.onVersionsClick}
+                >
+                  Hide versions
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+        <div className="d-flex justify-content-between">
+          <RecipeModal
+            label={"Update"}
+            id={recipe._id}
+            onRecipeAdd={onRecipeUpdate}
+            recipe={recipe}
+          />
+          <button
+            type="button"
+            className="btn btn-outline-danger my-2 shadow-none"
+            onClick={() => onRecipeDelete(recipe._id)}
+          >
+            Delete
+          </button>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default SelectedRecipe;
