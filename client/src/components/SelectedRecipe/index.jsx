@@ -19,8 +19,8 @@ class SelectedRecipe extends React.Component {
           alt="recipe"
           className="img-fluid w-75 mx-auto d-block"
         />
-        <h3 className="text-center break-word">{recipe.title}</h3>
-        <p className="word-break m-0">{recipe.description}</p>
+        <h3 className="text-center text-break">{recipe.title}</h3>
+        <p className="text-break m-0">{recipe.description}</p>
         {!!recipe.previousVersions.length && (
           <div>
             <button
@@ -33,11 +33,11 @@ class SelectedRecipe extends React.Component {
               <div>
                 {recipe.previousVersions.reverse().map((version, index) => (
                   <div key={index} className="recipe-version py-1">
-                    <p className="m-0">
+                    <p className="m-0 text-break">
                       <span className="font-weight-bold">Title: </span>
                       {version.title}
                     </p>
-                    <p className="m-0">
+                    <p className="m-0 text-break">
                       <span className="font-weight-bold">Description: </span>
                       {version.description}
                     </p>
