@@ -1,10 +1,10 @@
 import { Recipe } from "../models/recipe.model.js";
 
-export const findAllRecipies = async () => {
+export const findAllRecipes = async () => {
   try {
-    const recipies = await Recipe.find().sort("-createdAt");
+    const recipes = await Recipe.find().sort("-createdAt");
 
-    return recipies;
+    return recipes;
   } catch (e) {
     console.error(e);
   }

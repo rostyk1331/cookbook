@@ -1,16 +1,16 @@
 import {
-  findAllRecipies,
+  findAllRecipes,
   findRecipeById,
   createRecipe,
   removeRecipeById,
   updateRecipeById
-} from "../db.requests/recipies.requests.js";
+} from "../db.requests/recipes.requests.js";
 
-export const getAllRecipies = async (req, res) => {
+export const getAllRecipes = async (req, res) => {
   try {
-    const recipies = await findAllRecipies();
+    const recipes = await findAllRecipes();
 
-    res.json({ recipies });
+    res.json({ recipes });
   } catch (e) {
     console.error(e);
   }

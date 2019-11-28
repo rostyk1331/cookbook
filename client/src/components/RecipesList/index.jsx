@@ -1,10 +1,10 @@
 import React from "react";
 import Recipe from "../Recipe";
 
-const RecipiesList = ({ recipiesList, onRecipeSelect }) => {
+const RecipesList = ({ recipesList, onRecipeSelect }) => {
   return (
     <div className="row">
-      {recipiesList.map(recipe => (
+      {recipesList.map(recipe => (
         <Recipe
           recipe={recipe}
           onRecipeSelect={onRecipeSelect}
@@ -15,4 +15,4 @@ const RecipiesList = ({ recipiesList, onRecipeSelect }) => {
   );
 };
 
-export default RecipiesList;
+export default RecipesList;

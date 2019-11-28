@@ -1,18 +1,18 @@
 import React from "react";
-import RecipiesList from "./RecipiesList";
+import RecipesList from "./RecipesList";
 import SelectedRecipe from "./SelectedRecipe";
 import RecipeModal from "./RecipeModal";
 
 class App extends React.Component {
-  state = { recipiesList: [], selectedRecipe: null };
+  state = { recipesList: [], selectedRecipe: null };
 
   componentDidMount() {
-    fetch("http://localhost:4000/recipies")
+    fetch("http://localhost:4000/recipes")
       .then(response => response.json())
       .then(data => {
         this.setState({
-          recipiesList: data.recipies,
-          selectedRecipe: data.recipies[0]
+          recipesList: data.recipes,
+          selectedRecipe: data.recipes[0]
         });
       });
   }
@@ -22,16 +22,16 @@ class App extends React.Component {
   };
 
   onRecipeDelete = id => {
-    fetch(`http://localhost:4000/recipies/${id}`, { method: "DELETE" })
+    fetch(`http://localhost:4000/recipes/${id}`, { method: "DELETE" })
       .then(response => response.json())
       .then(data => {
         this.setState({
-          recipiesList: this.state.recipiesList.filter(
+          recipesList: this.state.recipesList.filter(
             recipe => recipe._id !== id
           ),
           selectedRecipe:
-            this.state.selectedRecipe._id !== this.state.recipiesList[0]._id
-              ? this.state.recipiesList[0]
+            this.state.selectedRecipe._id !== this.state.recipesList[0]._id
+              ? this.state.recipesList[0]
               : null
         });
       });
@@ -43,11 +43,11 @@ class App extends React.Component {
       headers: { "content-type": "application/json" },
       body: JSON.stringify(body)
     };
-    fetch("http://localhost:4000/recipies", options)
+    fetch("http://localhost:4000/recipes", options)
       .then(response => response.json())
       .then(data => {
         this.setState({
-          recipiesList: [data.recipe, ...this.state.recipiesList],
+          recipesList: [data.recipe, ...this.state.recipesList],
           selectedRecipe: data.recipe
         });
       });
@@ -59,11 +59,11 @@ class App extends React.Component {
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ title, description })
     };
-    fetch(`http://localhost:4000/recipies/${id}`, options)
+    fetch(`http://localhost:4000/recipes/${id}`, options)
       .then(response => response.json())
       .then(data => {
         this.setState({
-          recipiesList: this.state.recipiesList.map(recipe => {
+          recipesList: this.state.recipesList.map(recipe => {
             if (recipe._id === id) {
               recipe = data.recipe;
             }
@@ -75,7 +75,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { recipiesList, selectedRecipe } = this.state;
+    const { recipesList, selectedRecipe } = this.state;
     return (
       <div className="container">
         <div className="row">
@@ -85,8 +85,8 @@ class App extends React.Component {
               label={"Add New Recipe"}
               onRecipeAdd={this.onRecipeAdd}
             />
-            <RecipiesList
-              recipiesList={recipiesList}
+            <RecipesList
+              recipesList={recipesList}
               onRecipeSelect={this.onRecipeSelect}
               onRecipeDelete={this.onRecipeDelete}
             />
