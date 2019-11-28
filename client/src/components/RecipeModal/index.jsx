@@ -16,7 +16,7 @@ const RecipeModal = ({ label, onRecipeAdd, id, recipe }) => {
   const [modal, setModal] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [isInputinvalid, setIsInputinvalid] = useState(false);
+  const [isInputInvalid, setIsInputInvalid] = useState(false);
 
   const toggle = () => {
     if (recipe) {
@@ -32,7 +32,7 @@ const RecipeModal = ({ label, onRecipeAdd, id, recipe }) => {
 
   const onModalConfirm = () => {
     if (!title.trim() || !description.trim()) {
-      setIsInputinvalid(true);
+      setIsInputInvalid(true);
       return;
     }
 
@@ -40,7 +40,7 @@ const RecipeModal = ({ label, onRecipeAdd, id, recipe }) => {
     toggle();
     setTitle("");
     setDescription("");
-    setIsInputinvalid(false);
+    setIsInputInvalid(false);
   };
 
   return (
@@ -59,7 +59,7 @@ const RecipeModal = ({ label, onRecipeAdd, id, recipe }) => {
             <FormGroup>
               <Label for="title">Title</Label>
               <Input
-                invalid={isInputinvalid && !title.trim()}
+                invalid={isInputInvalid && !title.trim()}
                 type="text"
                 name="title"
                 id="title"
@@ -72,7 +72,7 @@ const RecipeModal = ({ label, onRecipeAdd, id, recipe }) => {
             <FormGroup>
               <Label for="description">Description</Label>
               <Input
-                invalid={isInputinvalid && !description.trim()}
+                invalid={isInputInvalid && !description.trim()}
                 type="textarea"
                 name="text"
                 id="description"
